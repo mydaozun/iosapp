@@ -275,6 +275,74 @@
             font-size: 13px;
         }
 
+        /* 不蒜子统计卡片 */
+        .busuanzi-stats {
+            margin-top: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .stat-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1;
+        }
+
+        .stat-unit {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-left: 4px;
+        }
+
         /* 响应式 */
         @media (max-width: 640px) {
             body {
@@ -380,16 +448,42 @@
                 <div class="qr-label">扫码关注</div>
             </div>
             <p>© 2026 iosapp · https://iOSapp.cc.cd</p>
-            <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
-            今日总访问量 <span id="busuanzi_today_pv">加载中...</span> 次
-            今日总访客数 <span id="busuanzi_today_uv">加载中...</span> 人
-            本站总访问量 <span id="busuanzi_site_pv">加载中...</span> 次
-            本站总访客数 <span id="busuanzi_site_uv">加载中...</span> 人
-            本页总阅读量 <span id="busuanzi_page_pv">加载中...</span> 次
-            本页总访客数 <span id="busuanzi_page_uv">加载中...</span> 人
+            <div class="busuanzi-stats">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-info">
+                            <div class="stat-label">今日访问量</div>
+                            <div><span id="busuanzi_value_site_pv_today" class="stat-value">0</span><span class="stat-unit">次</span></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-label">今日访客数</div>
+                            <div><span id="busuanzi_value_site_uv_today" class="stat-value">0</span><span class="stat-unit">人</span></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <div class="stat-label">本站访问量</div>
+                            <div><span id="busuanzi_value_site_pv" class="stat-value">0</span><span class="stat-unit">次</span></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-info">
+                            <div class="stat-label">本站访客数</div>
+                            <div><span id="busuanzi_value_site_uv" class="stat-value">0</span><span class="stat-unit">人</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script>
         function filterLinks() {
             const input = document.getElementById('searchInput');
